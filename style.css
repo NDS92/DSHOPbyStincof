@@ -1,0 +1,81 @@
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      height :115px;
+      background-color: #82CFE0;
+      color: #ffffff;
+      text-align: center;
+    }
+    header {
+      margin-top : 0;
+    }
+    footer {
+      margin-bottom: 0;
+    }
+    header .logo {
+      position : abstop
+      height: 145px;
+      width: 145px;
+      float: left;
+      margin-left: 5px;
+      margin-top: 0px;
+      vertical-align: middle;
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .article {
+      width: calc(33.33% - 20px);
+      max-width: 290px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin: 20px;
+      cursor: pointer;
+    }
+    .article img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      max-width: 150px;
+    }
+    .article-info {
+      padding: 10px;
+    }
+    .article-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .article-details img {
+      max-width: 400px;
+      margin-right: 20px;
+    }
+    .article-details-info {
+      text-align: left;
+    }
+    .order-button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .order-button:hover {
+      background-color: #2980b9;
+    }
+  .warning{
+    color : red;
+  }
