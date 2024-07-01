@@ -172,7 +172,7 @@
               <input type="text" id="customerAddress" name="address" required><br>
               <label for="customerEmail">Adresse e-mail :</label><br>
               <input type="email" id="customerEmail" name="email" required><br>
-              <p class="warning"> ATTENTION : Veuillez envoyez le mail de commande puis retourner sur cette page pour payer </p>
+              <p class="warning"> ATTENTION : N'oubliez pas de revenir à cette page pour commander après avoir payer </p>
               <br>
               <button type="submit" class="order-button">Commander et payer</button>
             </form>
@@ -215,31 +215,26 @@
       const prix = document.querySelector('input[name="amount"]').value;
       orderDetails += `Produit: ${nomProduit}\nPrix: ${prix}€`;
       
-      if (!isValid) {
-        // Envoyer les détails de la commande aux adresses e-mail avec les champs non valables
-        const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande (champs non valables)&body=${encodeURIComponent(orderDetails)}`;
-        window.open(mailtoLink);
-        return false;
-      }
-      
-      // Envoyer les détails de la commande aux adresses e-mail avec tous les champs valables
-      const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande (champs valables)&body=${encodeURIComponent(orderDetails)}`;
-      window.open(mailtoLink);
-      
       // Soumettre le formulaire PayPal avec le prix non modifiable
-      document.querySelector('input[name="amount"]').value = prix.replace('€', '');
-      
-      // Rediriger vers PayPal
-      document.querySelector('form').submit();
-      
-      return true;
-    }
+document.querySelector('input[name="amount"]').value = prix.replace('€', '');
+
+// Rediriger vers PayPal
+document.querySelector('form').submit();
+
+// Attendre que le paiement soit effectué (vous devrez implémenter cette logique)
+// Cela peut être fait en utilisant l'API PayPal pour vérifier le statut du paiement
+
+// Une fois le paiement confirmé, revenez à la page principale
+window.addEventListener('message', function(event) {
+  if (event.data === 'paymentComplete') {
+    // Envoyer les détails de la commande par e-mail
+    const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande&body=${encodeURIComponent(orderDetails)}`;
+    window.open(mailtoLink);
     
-    // Fonction pour valider l'adresse e-mail
-    function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
+    // Rediriger vers une page de confirmation
+    window.location.href = 'confirmation.html';
+  }
+});
   </script>
 </body>
 </html>
