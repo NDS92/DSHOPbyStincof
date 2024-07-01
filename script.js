@@ -16,13 +16,14 @@
     }
     
     const articlesContainer = document.getElementById("articlesContainer");
-    articlesContainer.appendChild(generateArticle("Lightsaber with multi color", "44.99€", "lightsaber_image_1.jpeg", "You want to become a jedi or a sith, here is a lightsaber with more than ten blade colors (RGB) <br> Vous souhaitez devenir un jedi ou un sith, voici un sabre laser avec plus de dix couleurs de lame (RVB) <br> Size: full length 80CM/handle 25CM (diameter 30MM)/sword body about 60CM <br>Taille : pleine longueur 80CM/poignée 25CM (diamètre 30MM)/corps de l'épée environ 60CM"));
-    articlesContainer.appendChild(generateArticle("The most powerful water gun", "54.99€", "the_most_powerful_water_gun_image_1.jpeg", "Here is one of the most powerful water guns in the world,<br> with its futuristic shape and incredible power. Perfect for water fights <br> Voici l'un des pistolets à eau les plus puissants au monde, <br>avec sa forme futuriste et sa puissance incroyable. Parfait pour les batailles d'eau <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
+    articlesContainer.appendChild(generateArticle("Lightsaber with multi color", "39.99€", "lightsaber_image_1.jpeg", "You want to become a jedi or a sith, here is a lightsaber with more than ten blade colors (RGB) <br> Vous souhaitez devenir un jedi ou un sith, voici un sabre laser avec plus de dix couleurs de lame (RVB) <br> Size: full length 80CM/handle 25CM (diameter 30MM)/sword body about 60CM <br>Taille : pleine longueur 80CM/poignée 25CM (diamètre 30MM)/corps de l'épée environ 60CM"));
+    articlesContainer.appendChild(generateArticle("The most powerful water gun", "39.99€", "the_most_powerful_water_gun_image_1.jpeg", "Here is one of the most powerful water guns in the world,<br> with its futuristic shape and incredible power. Perfect for water fights <br> Voici l'un des pistolets à eau les plus puissants au monde, <br>avec sa forme futuriste et sa puissance incroyable. Parfait pour les batailles d'eau <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
     articlesContainer.appendChild(generateArticle("Super balle à effet", "24.99€", "super_effect_ball_image_2.jpeg", "You want to make shots with superb effects like your favorite footballers, here is a ball that produces very fun effects <br>Vous souhaitez réaliser des clichés avec de superbes effets comme vos footballeurs préférés, <br>voici un ballon qui produit des effets très amusants "));
-    articlesContainer.appendChild(generateArticle("Glock water gun", "24.99€", "Glock_water_gun_image_1.png", "Here is an easy to carry water gun with superb power. Very funny <br> Voici un pistolet à eau facile à transporter et doté d'une superbe puissance. Très drôle <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
+    articlesContainer.appendChild(generateArticle("Glock water gun", "19.99€", "Glock_water_gun_image_1.png", "Here is an easy to carry water gun with superb power. Very funny <br> Voici un pistolet à eau facile à transporter et doté d'une superbe puissance. Très drôle <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
     articlesContainer.appendChild(generateArticle("Spiderman Webshooter", "49.99€", "spiderman_webshooter_image1.jpeg", "Do you like Spiderman? Here is his Webshooter which launches real projectiles <br> Aimez-vous Spiderman? Voici son Webshooter qui lance de vrais projectiles <br> Color : black / couleur : noir"));
-    articlesContainer.appendChild(generateArticle("Submachine water gun", "49.99€", "submachine_water_gun.jpeg", "Here is an assault rifle for the best water fights between friends <br> Voici un fusil d'assaut pour les meilleurs batailles d'eau entre amis <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
-    articlesContainer.appendChild(generateArticle("Balle météore rebondissante ", "4.99€", "Balle_météore_rebondissante.png", ""));
+    articlesContainer.appendChild(generateArticle("Submachine water gun", "29.99€", "submachine_water_gun.jpeg", "Here is an assault rifle for the best water fights between friends <br> Voici un fusil d'assaut pour les meilleurs batailles d'eau entre amis <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
+    articlesContainer.appendChild(generateArticle("Balle météore rebondissante ", "4.99€", "Balle_météore_rebondissante.png", ""
+                                                 ));
     
     // Fonction pour ouvrir les détails de l'article
     function openArticle(nomProduit, prix, image, description) {
@@ -53,7 +54,7 @@
               <input type="text" id="customerAddress" name="address" required><br>
               <label for="customerEmail">Adresse e-mail :</label><br>
               <input type="email" id="customerEmail" name="email" required><br>
-              <p class="warning"> ATTENTION : Veuillez envoyez le mail de commande puis retourner sur cette page pour payer </p>
+              <p class="warning"> ATTENTION : N'oubliez pas de revenir à cette page pour commander après avoir payer </p>
               <br>
               <button type="submit" class="order-button">Commander et payer</button>
             </form>
@@ -96,28 +97,38 @@
       const prix = document.querySelector('input[name="amount"]').value;
       orderDetails += `Produit: ${nomProduit}\nPrix: ${prix}€`;
       
-      if (!isValid) {
-        // Envoyer les détails de la commande aux adresses e-mail avec les champs non valables
-        const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande (champs non valables)&body=${encodeURIComponent(orderDetails)}`;
-        window.open(mailtoLink);
-        return false;
-      }
-      
-      // Envoyer les détails de la commande aux adresses e-mail avec tous les champs valables
-      const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande (champs valables)&body=${encodeURIComponent(orderDetails)}`;
-      window.open(mailtoLink);
-      
-      // Soumettre le formulaire PayPal avec le prix non modifiable
-      document.querySelector('input[name="amount"]').value = prix.replace('€', '');
-      
-      // Rediriger vers PayPal
-      document.querySelector('form').submit();
-      
-      return true;
-    }
-    
-    // Fonction pour valider l'adresse e-mail
-    function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
+     // Page initiale : Créer le lien mailto pour envoyer les détails de la commande par e-mail
+const orderDetails = "Détails de la commande ici"; // Assurez-vous de définir les détails de la commande
+const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande&body=${encodeURIComponent(orderDetails)}`;
+
+// Ouvrir la fenêtre d'e-mail
+window.open(mailtoLink);
+
+// Rediriger vers la page PayPal
+window.location.href = 'paypal.html';
+
+// Sur la page PayPal (paypal.html) :
+document.addEventListener('DOMContentLoaded', function() {
+  // Soumettre le formulaire PayPal avec le prix non modifiable
+  const prix = "10.00"; // Assurez-vous de définir le prix correct
+  document.querySelector('input[name="amount"]').value = prix.replace('€', '');
+
+  // Soumettre automatiquement le formulaire PayPal
+  document.querySelector('form').submit();
+
+  // Attendre que le paiement soit effectué
+  // Cela peut être fait en utilisant l'API PayPal pour vérifier le statut du paiement
+  // Une fois le paiement confirmé :
+  window.opener.postMessage('paymentComplete', '*');
+  
+  // Fermer la fenêtre PayPal
+  window.close();
+});
+
+// Sur la page initiale, écouter le message de confirmation de paiement
+window.addEventListener('message', function(event) {
+  if (event.data === 'paymentComplete') {
+    // Rediriger vers une page de confirmation
+    window.location.href = 'confirmation.html';
+  }
+});
