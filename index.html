@@ -215,22 +215,37 @@
       const prix = document.querySelector('input[name="amount"]').value;
       orderDetails += `Produit: ${nomProduit}\nPrix: ${prix}€`;
       
-      // Soumettre le formulaire PayPal avec le prix non modifiable
-document.querySelector('input[name="amount"]').value = prix.replace('€', '');
+     // Page initiale : Créer le lien mailto pour envoyer les détails de la commande par e-mail
+const orderDetails = "Détails de la commande ici"; // Assurez-vous de définir les détails de la commande
+const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande&body=${encodeURIComponent(orderDetails)}`;
 
-// Rediriger vers PayPal
-document.querySelector('form').submit();
+// Ouvrir la fenêtre d'e-mail
+window.open(mailtoLink);
 
-// Attendre que le paiement soit effectué (vous devrez implémenter cette logique)
-// Cela peut être fait en utilisant l'API PayPal pour vérifier le statut du paiement
+// Rediriger vers la page PayPal
+window.location.href = 'paypal.html';
 
-// Une fois le paiement confirmé, revenez à la page principale
+// Sur la page PayPal (paypal.html) :
+document.addEventListener('DOMContentLoaded', function() {
+  // Soumettre le formulaire PayPal avec le prix non modifiable
+  const prix = "10.00"; // Assurez-vous de définir le prix correct
+  document.querySelector('input[name="amount"]').value = prix.replace('€', '');
+
+  // Soumettre automatiquement le formulaire PayPal
+  document.querySelector('form').submit();
+
+  // Attendre que le paiement soit effectué
+  // Cela peut être fait en utilisant l'API PayPal pour vérifier le statut du paiement
+  // Une fois le paiement confirmé :
+  window.opener.postMessage('paymentComplete', '*');
+  
+  // Fermer la fenêtre PayPal
+  window.close();
+});
+
+// Sur la page initiale, écouter le message de confirmation de paiement
 window.addEventListener('message', function(event) {
   if (event.data === 'paymentComplete') {
-    // Envoyer les détails de la commande par e-mail
-    const mailtoLink = `mailto:thedshopbuy@gmail.com?subject=Nouvelle commande&body=${encodeURIComponent(orderDetails)}`;
-    window.open(mailtoLink);
-    
     // Rediriger vers une page de confirmation
     window.location.href = 'confirmation.html';
   }
