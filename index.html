@@ -146,7 +146,8 @@ articles = [
 ]
     const articlesContainer = document.getElementById("articlesContainer");
     for (let i = 0; i < articles.length; i++) {
-      generateArticle.articlesContainer(articles[i]);
+      let article = generateArticle(...articles[i]);
+      articlesContainer.appendChild(article);
     }
     
     // Fonction pour ouvrir les détails de l'article
