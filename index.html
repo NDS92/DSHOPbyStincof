@@ -118,21 +118,21 @@
   
   <script>
     // Fonction pour générer les articles
-    function generateArticle(nomProduit, prix, image, description) {
-      const article = document.createElement('div');
-      article.classList.add('article');
-      article.onclick = function() {
-        openArticle(nomProduit, prix, image, description);
-      };
-      article.innerHTML = `
-        <img src="${image}" alt="${nomProduit}">
-        <div class="article-info">
-          <h2>${nomProduit}</h2>
-          <p>Prix: ${prix}</p>
-        </div>
-      `;
-      return article;
-    }
+function generateArticle(nomProduit, prix, image, description) {
+  const article = document.createElement('div');
+  article.classList.add('article');
+  article.onclick = function() {
+    openArticle(nomProduit, prix, image, description);
+  };
+  article.innerHTML = `
+    <img src="${image}" alt="${nomProduit}">
+    <div class="article-info">
+      <h2>${nomProduit}</h2>
+      <p>Prix: ${prix}</p>
+    </div>
+  `;
+  return article;
+}
     
     const articlesContainer = document.getElementById("articlesContainer");
     articlesContainer.appendChild(generateArticle("Lightsaber with multi color", "39.99€", "lightsaber_image_1.jpeg", "You want to become a jedi or a sith, here is a lightsaber with more than ten blade colors (RGB) <br> Vous souhaitez devenir un jedi ou un sith, voici un sabre laser avec plus de dix couleurs de lame (RVB) <br> Size: full length 80CM/handle 25CM (diameter 30MM)/sword body about 60CM <br>Taille : pleine longueur 80CM/poignée 25CM (diamètre 30MM)/corps de l'épée environ 60CM"));
