@@ -133,16 +133,20 @@ function generateArticle(nomProduit, prix, image, description) {
   `;
   return article;
 }
+articles = [
+  ("Lightsaber with multi color", "39.99€", "lightsaber_image_1.jpeg", "You want to become a jedi or a sith, here is a lightsaber with more than ten blade colors (RGB) <br> Vous souhaitez devenir un jedi ou un sith, voici un sabre laser avec plus de dix couleurs de lame (RVB) <br> Size: full length 80CM/handle 25CM (diameter 30MM)/sword body about 60CM <br>Taille : pleine longueur 80CM/poignée 25CM (diamètre 30MM)/corps de l'épée environ 60CM"),
+  ("The most powerful water gun", "39.99€", "the_most_powerful_water_gun_image_1.jpeg", "Here is one of the most powerful water guns in the world,<br> with its futuristic shape and incredible power. Perfect for water fights <br> Voici l'un des pistolets à eau les plus puissants au monde, <br>avec sa forme futuriste et sa puissance incroyable. Parfait pour les batailles d'eau <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"),
+  ("Super balle à effet", "24.99€", "super_effect_ball_image_2.jpeg", "You want to make shots with superb effects like your favorite footballers, here is a ball that produces very fun effects <br>Vous souhaitez réaliser des clichés avec de superbes effets comme vos footballeurs préférés, <br>voici un ballon qui produit des effets très amusants "),
+   ("Glock water gun", "19.99€", "Glock_water_gun_image_1.png", "Here is an easy to carry water gun with superb power. Very funny <br> Voici un pistolet à eau facile à transporter et doté d'une superbe puissance. Très drôle <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"),
+   ("Spiderman Webshooter", "49.99€", "spiderman_webshooter_image1.jpeg", "Do you like Spiderman? Here is his Webshooter which launches real projectiles <br> Aimez-vous Spiderman? Voici son Webshooter qui lance de vrais projectiles <br> Color : black / couleur : noir"),
+   ("Submachine water gun", "29.99€", "submachine_water_gun.jpeg", "Here is an assault rifle for the best water fights between friends <br> Voici un fusil d'assaut pour les meilleurs batailles d'eau entre amis <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"),
+   ("Balle météore rebondissante ", "4.99€", "Balle_météore_rebondissante.png", "");
     
+]
     const articlesContainer = document.getElementById("articlesContainer");
-    articlesContainer.appendChild(generateArticle("Lightsaber with multi color", "39.99€", "lightsaber_image_1.jpeg", "You want to become a jedi or a sith, here is a lightsaber with more than ten blade colors (RGB) <br> Vous souhaitez devenir un jedi ou un sith, voici un sabre laser avec plus de dix couleurs de lame (RVB) <br> Size: full length 80CM/handle 25CM (diameter 30MM)/sword body about 60CM <br>Taille : pleine longueur 80CM/poignée 25CM (diamètre 30MM)/corps de l'épée environ 60CM"));
-    articlesContainer.appendChild(generateArticle("The most powerful water gun", "39.99€", "the_most_powerful_water_gun_image_1.jpeg", "Here is one of the most powerful water guns in the world,<br> with its futuristic shape and incredible power. Perfect for water fights <br> Voici l'un des pistolets à eau les plus puissants au monde, <br>avec sa forme futuriste et sa puissance incroyable. Parfait pour les batailles d'eau <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
-    articlesContainer.appendChild(generateArticle("Super balle à effet", "24.99€", "super_effect_ball_image_2.jpeg", "You want to make shots with superb effects like your favorite footballers, here is a ball that produces very fun effects <br>Vous souhaitez réaliser des clichés avec de superbes effets comme vos footballeurs préférés, <br>voici un ballon qui produit des effets très amusants "));
-    articlesContainer.appendChild(generateArticle("Glock water gun", "19.99€", "Glock_water_gun_image_1.png", "Here is an easy to carry water gun with superb power. Very funny <br> Voici un pistolet à eau facile à transporter et doté d'une superbe puissance. Très drôle <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
-    articlesContainer.appendChild(generateArticle("Spiderman Webshooter", "49.99€", "spiderman_webshooter_image1.jpeg", "Do you like Spiderman? Here is his Webshooter which launches real projectiles <br> Aimez-vous Spiderman? Voici son Webshooter qui lance de vrais projectiles <br> Color : black / couleur : noir"));
-    articlesContainer.appendChild(generateArticle("Submachine water gun", "29.99€", "submachine_water_gun.jpeg", "Here is an assault rifle for the best water fights between friends <br> Voici un fusil d'assaut pour les meilleurs batailles d'eau entre amis <br> The battery and its charger are included <br> La batterie et son chargeur sont inclus"));
-    articlesContainer.appendChild(generateArticle("Balle météore rebondissante ", "4.99€", "Balle_météore_rebondissante.png", ""
-                                                 ));
+    for (let i = 0; i < articles.length; i++) {
+      génerateArticle.appendChild.articlesContainer(articles[i]);
+    }
     
     // Fonction pour ouvrir les détails de l'article
     function openArticle(nomProduit, prix, image, description) {
